@@ -8,4 +8,4 @@
 # 自主學習筆記區
 
 # 作業連結區
-*  [作業1]()
+*  [作業1](https://kang111014.github.io/kanginthub/)
