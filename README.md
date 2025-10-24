@@ -9,3 +9,4 @@
 
 # 作業連結區
 *  [作業1](https://kang111014.github.io/kanginthub/)
+*  [作業2](https://youtu.be/amf49wAs5BU)
