@@ -194,3 +194,38 @@ section {
     font-size: 14px;
     color: #ccc;
 }
+
+/* ===== YouTube 影片卡片樣式 ===== */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* 確保圖片圓角生效 */
+    transition: transform 0.2s;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-card a {
+    text-decoration: none;
+    color: #333;
+}
+
+.video-card img {
+    width: 100%;
+    display: block;
+}
+
+.video-card p {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
