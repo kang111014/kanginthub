@@ -29,8 +29,8 @@ export default async function handler(request, response) {
     const accessToken = await getAccessToken();
 
     // 【偵錯點 1】定義我們要呼叫的 URL
-    const spotifyURL = `https://api.spotify.com/v1/browse/featured-playlists?country=TW&limit=6`;
-
+    const spotifyURL = `https://api.spotify.com/v1/browse/categories/toplists/playlists?country=TW&limit=6`;
+    
     // 【偵錯點 2】在 Vercel 後台印出這個 URL，確認它是否正確
     console.log('Attempting to fetch Spotify URL:', spotifyURL);
 
