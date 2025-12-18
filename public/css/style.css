@@ -229,3 +229,41 @@ section {
     font-size: 14px;
     font-weight: 600;
 }
+
+/* ===== Spotify 播放清單卡片樣式 ===== */
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.playlist-card {
+    background: #191414; /* Spotify 黑色 */
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.3s;
+}
+
+.playlist-card:hover {
+    background: #282828;
+}
+
+.playlist-card a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.playlist-card img {
+    width: 100%;
+    display: block;
+}
+
+.playlist-card p {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;      /* 避免文字換行 */
+    overflow: hidden;         /* 隱藏超出的文字 */
+    text-overflow: ellipsis;  /* 超出部分顯示 ... */
+}
