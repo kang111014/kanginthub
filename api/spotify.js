@@ -30,7 +30,7 @@ export default async function handler(request, response) {
 
     // 2. 帶著 Access Token 去取得精選播放清單
     // limit=6 代表我們只要 6 個播放清單
-    const apiResponse = await fetch('https://api.spotify.com/v1/browse/featured-playlists?limit=6', {
+    const apiResponse = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=TW&limit=6', {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
       },
