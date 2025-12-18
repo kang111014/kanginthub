@@ -22,15 +22,20 @@ async function getAccessToken() {
   return data.access_token;
 }
 
-// 主要的 API 處理函式
+// 【↓↓↓ 從這裡開始替換 ↓↓↓】
 export default async function handler(request, response) {
   try {
     // 1. 先取得 Access Token
     const accessToken = await getAccessToken();
 
+    // 【偵錯點 1】定義我們要呼叫的 URL
+    const spotifyURL = `https://api.spotify.com/v1/browse/featured-playlists?country=TW&limit=6`;
+
+    // 【偵錯點 2】在 Vercel 後台印出這個 URL，確認它是否正確
+    console.log('Attempting to fetch Spotify URL:', spotifyURL);
+
     // 2. 帶著 Access Token 去取得精選播放清單
-    // limit=6 代表我們只要 6 個播放清單
-    const apiResponse = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=TW&limit=6', {
+    const apiResponse = await fetch(spotifyURL, { // <-- 確認這裡使用的是我們定義的變數
       headers: {
         'Authorization': `Bearer ${accessToken}`,
       },
@@ -38,20 +43,17 @@ export default async function handler(request, response) {
 
     const data = await apiResponse.json();
 
-    // 檢查 API 是否回傳錯誤
     if (data.error) {
       console.error('Spotify API Error:', data.error);
       return response.status(500).json({ error: data.error.message });
     }
     
-    // 從回傳的資料中，挑選我們需要的欄位
     const playlists = data.playlists.items.map(item => ({
       name: item.name,
       url: item.external_urls.spotify,
-      imageUrl: item.images[0].url, // 使用第一張圖 (通常是最大張的)
+      imageUrl: item.images[0].url,
     }));
 
-    // 成功！回傳整理好的播放清單資料
     return response.status(200).json(playlists);
 
   } catch (error) {
@@ -59,3 +61,4 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: 'Internal Server Error' });
   }
 }
+// 【↑↑↑ 替換到這裡結束 ↑↑↑】
